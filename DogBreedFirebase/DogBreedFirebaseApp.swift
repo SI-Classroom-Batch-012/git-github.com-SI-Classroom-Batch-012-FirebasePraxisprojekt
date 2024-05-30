@@ -6,12 +6,20 @@
 //
 
 import SwiftUI
+import Firebase
 
 @main
 struct DogBreedFirebaseApp: App {
+    @StateObject var dataManager = FirebaseDataManager()
+    
+    init(){
+        FirebaseApp.configure()
+    }
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            DogListView()
+                .environmentObject(dataManager)
         }
     }
 }
